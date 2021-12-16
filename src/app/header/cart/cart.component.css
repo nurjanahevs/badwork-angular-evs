@@ -1,0 +1,21 @@
+.container{
+  margin-top: 60px;
+}
+
+.card{
+  height: 60vh;
+  margin: 25px;
+  padding: 25px;
+}
+
+.center{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.btn-primary{
+  margin-bottom: 20px;
+}

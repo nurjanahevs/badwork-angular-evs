@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm fixed-top">
+  <div class="container">
+    <h3>
+      <fa-icon class="me-2" [icon]="faShoppingBag"></fa-icon>
+    </h3>
+    <a class="navbar-brand" href="#">EVASHOP</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="form-group">
+      <form class="d-flex">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search Product"
+          aria-label="Search"
+        />
+        <button class="btn">
+          <fa-icon
+            style="font-size: 20px"
+            class="search"
+            [icon]="faSearch"
+          ></fa-icon>
+        </button>
+      </form>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Home"
+            aria-current="page"
+            routerLink="/home"
+            routerLinkActive="active"
+            ><fa-icon style="font-size: 25px" [icon]="faHome"></fa-icon
+          ></a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            data-bs-toggle="tooltip"
+            data-bs-placement="bottom"
+            title="Product"
+            aria-current="page"
+            routerLink="/products"
+            routerLinkActive="active"
+            ><fa-icon style="font-size: 25px" [icon]="faTags"></fa-icon
+          ></a>
+        </li>
+        <li>
+          <button
+        class="btn"
+        onclick="toggleBasket()"
+        data-bs-toggle="tooltip"
+        data-bs-placement="bottom"
+        title="Cart"
+      >
+        <a routerLink="/cart" routerLinkActive="active"
+          ><fa-icon
+            class="text-light"
+            style="font-size: 25px"
+            [icon]="faCartPlus"
+          ></fa-icon
+        ></a>
+        <div style="font-size: 10px" class="badge bg-danger">0</div>
+      </button>
+        </li>
+      </ul>
+    </div>
+    <form action="d-flex">
+      <button class="btn sign" routerLink="/login" routerLinkActive="active"><h6>Log In</h6></button>
+      <button class="btn sign" routerLink="/register" routerLinkActive="active"><h6>Register</h6></button>
+    </form>  
+  </div>
+</nav>
