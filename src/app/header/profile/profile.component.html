@@ -2,38 +2,39 @@
   <form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
 <h2>Complete Profile</h2>
     <label for="first-name">First Name: </label>
-    <input id="first-name" type="text" formControlName="firstName">
+    <input password id="first-name" type="text" formControlName="firstName">
   
     <label for="last-name">Last Name: </label>
     <input id="last-name" type="text" formControlName="lastName">
+
+    <label for="age">Age: </label>
+    <input id="age" type="number" formControlName="age">
+
+    <label for="asddress">Address: </label>
+    <input id="address" type="text" formControlName="address">
+
   </form>
+
   <div class="form" formGroupName="address">
     <h2>Address</h2>
   
     <label for="street">Street: </label>
-    <input id="street" type="text" formControlName="street">
+    <input [(ngModel)]="dataAddress.street" id="street" type="text" formControlName="street">
   
     <label for="city">City: </label>
-    <input id="city" type="text" formControlName="city">
+    <input [(ngModel)]="dataAddress.city" id="city" type="text" formControlName="city">
   
     <label for="state">State: </label>
-    <input id="state" type="text" formControlName="state">
+    <input [(ngModel)]="dataAddress.state" id="state" type="text" formControlName="state">
   
     <label for="zip">Zip Code: </label>
-    <input id="zip" type="text" formControlName="zip">
-  </div>
-  <div formArrayName="aliases">
-  <h2>Aliases</h2>
-  <button (click)="addAlias()" type="button">+ Add another alias</button>
+    <input [(ngModel)]="dataAddress.zipcode" id="zip" type="text" formControlName="zip">
+ 
 
-  <div *ngFor="let alias of aliases.controls; let i=index">
-    <!-- The repeated alias template -->
-    <label for="alias-{{ i }}">Alias:</label>
-    <input id="alias-{{ i }}" type="text" [formControlName]="i">
-  </div>
+ 
 </div>
   <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!profileForm.valid">Submit</button>
+  <button (click)="postAddress()" type="submit" [disabled]="!profileForm.valid">Submit</button>
   <p>Form Status: {{ profileForm.status }}</p>
   <button (click)="updateProfile()">Update Profile</button>
 </div>

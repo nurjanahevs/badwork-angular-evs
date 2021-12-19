@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth/auth.service';
+import { CartService } from '../services/cart.service';
+import { ProductService } from '../services/product.service';
+
 import {
   faCartPlus,
   faShoppingBag,
@@ -7,6 +11,7 @@ import {
   faHome,
   faTags
 } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +26,12 @@ export class HeaderComponent implements OnInit {
   faHome = faHome;
   faTags = faTags;
 
-  constructor() {}
 
-  ngOnInit(): void {}
-}
+
+  constructor(public authService : AuthService, private cartService : CartService ,public productService : ProductService) { }
+
+  ngOnInit(): void {
+ 
+    }
+  }
+

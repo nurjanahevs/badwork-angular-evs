@@ -5,7 +5,10 @@ import {  FormArray,
   FormGroup,
   Validators, } from '@angular/forms';
   import { Observable } from 'rxjs';
-  import { AuthService } from 'src/app/services/auth.service';
+  import { AuthService } from '../../services/auth/auth.service';
+  import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-register',
@@ -14,8 +17,24 @@ import {  FormArray,
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  dataUser = {
+    email:'',
+    password:'',
+    name:'',
+  }
 
+  constructor(private authService:AuthService, private router:Router) { }
+
+
+  signupUser(){
+    this.authService.signupUser(this.dataUser)
+    .subscribe(
+      res =>{
+      console.log(res)
+      this.router.navigate(['profile'])
+    },
+    )
+  }
   ngOnInit(): void {
   }
 

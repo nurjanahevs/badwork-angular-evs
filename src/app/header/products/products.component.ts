@@ -1,3 +1,5 @@
+import { map, Observable } from 'rxjs';
+import { ProductService } from '../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import {
   faBars,
@@ -5,6 +7,8 @@ import {
   faStar,
   faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-products',
@@ -12,13 +16,12 @@ import {
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  product$ : Observable<any[]> | undefined
+  product : any
   faBars = faBars;
   faAngleRight = faAngleRight;
   faStar = faStar;
   faStarHalfAlt = faStarHalfAlt;
-  imageCarousel1 = '../../../../assets/images/slide1.jpg';
-  imageCarousel2 = '../../../../assets/images/slide2.jpg';
-  imageCarousel3 = '../../../../assets/images/slide3.jpg';
   headPhone = '../../../../assets/product-images/headphone.jpg';
   jacket = '../../../../assets/product-images/jacket.jpg';
   camera = '../../../../assets/product-images/kamera.jpg';
@@ -28,9 +31,23 @@ export class ProductsComponent implements OnInit {
   ssd = '../../../../assets/product-images/ssd.jpg';
   usb = '../../../../assets/product-images/usb.jpg';
 
-  constructor() { }
+  constructor(private http:HttpClient, private productService:ProductService) { } 
 
   ngOnInit(): void {
+    this.getListProduct()
+  }
+
+  getListProduct(): void {
+    this.productService.getProduct()
+      .subscribe({
+        next: (data) => {
+          this.product = data;
+          console.log(data);
+          console.log(this.product.product.name)
+    
+        },
+        error: (e) => console.error(e)
+      });
   }
 
 }

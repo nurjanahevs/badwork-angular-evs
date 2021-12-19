@@ -13,6 +13,9 @@ import { CartComponent } from './header/cart/cart.component';
 import { ProductsComponent } from './header/products/products.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CategoryComponent } from './category/category.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductDetailComponent } from './header/products/product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -24,14 +27,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RegisterComponent,
     ProfileComponent,
     CartComponent,
-    ProductsComponent
+    ProductsComponent,
+    CategoryComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

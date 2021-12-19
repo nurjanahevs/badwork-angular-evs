@@ -1,0 +1,174 @@
+<div
+      class="modal fade"
+      id="product1"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Product Detail</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img [src]="headPhone" alt="headphone" />
+              </div>
+              <div class="col-md-6">
+                <table class="table table-borderless">
+                  <tr>
+                    <th>Product Name</th>
+                    <td>Headphone</td>
+                  </tr>
+                  <tr>
+                    <th>Brand/Type</th>
+                    <td>Boze/5B</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping Cost</th>
+                    <td>Standard</td>
+                  </tr>
+                  <tr>
+                    <th>Product Rating</th>
+                    <td>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStarHalfAlt"
+                      ></fa-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Stock</th>
+                    <td>120 Pcs</td>
+                  </tr>
+                  <tr>
+                    <th>Price</th>
+                    <td>Rp300.000,-</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button type="button" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="product2"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Product Detail</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img [src]="jacket" alt="jacket" />
+              </div>
+              <div class="col-md-6">
+                <table class="table table-borderless">
+                  <tr>
+                    <th>Product Name</th>
+                    <td>Jacket</td>
+                  </tr>
+                  <tr>
+                    <th>Brand/Type</th>
+                    <td>Super Nova/123A</td>
+                  </tr>
+                  <tr>
+                    <th>Shipping Cost</th>
+                    <td>Standard</td>
+                  </tr>
+                  <tr>
+                    <th>Product Rating</th>
+                    <td>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStar"
+                      ></fa-icon>
+                      <fa-icon
+                        class="text-success star"
+                        [icon]="faStarHalfAlt"
+                      ></fa-icon>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Stock</th>
+                    <td>10 Pcs</td>
+                  </tr>
+                  <tr>
+                    <th>Harga</th>
+                    <td>Rp900.000,-</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button (click)="addCart(0)" type="button" class="btn btn-primary">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>

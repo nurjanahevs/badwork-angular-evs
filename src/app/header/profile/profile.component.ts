@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
 import { Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -8,6 +10,15 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+
+  dataAddress = { 
+      street:'',
+      city:'',
+      state:'',
+      zipcode:''
+  }
+
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
@@ -17,12 +28,10 @@ export class ProfileComponent implements OnInit {
       state: [''],
       zip: ['']
     }),
-    aliases: this.fb.array([
-      this.fb.control('')
-    ])
+
   });
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private authService:AuthService, private router:Router) { }
 
   onSubmit() {
     console.warn(this.profileForm.value);
@@ -30,19 +39,21 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     this.profileForm.patchValue({
-      firstName: 'Nancy',
+      firstName: '',
       address: {
-        street: '123 Drew Street'
+        street: ''
       }
     });
   }
 
-  get aliases() {
-    return this.profileForm.get('aliases') as FormArray;
-  }
-
-  addAlias() {
-    this.aliases.push(this.fb.control(''));
+  postAddress(){
+    this.authService.postAddress(this.dataAddress)
+    .subscribe(
+      res =>{
+        console.log(res)
+      this.router.navigate(['home'])
+      }
+    )
   }
   
   ngOnInit(): void {}
