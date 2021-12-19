@@ -29,18 +29,13 @@ export class ProductDetailComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['_id']
-    this.getDetailProduct()
+   
   }
 
-  getDetailProduct(){
-    this.productService.getDetailProduct(this.id).subscribe(data => {
-      this.data = data.product
-    })
-  }
+ 
     
-  addCart(product:any) {
-    this.cartService.addCart({
+  addtoCart(product:any) {
+    this.cartService.addtoCart({
       product,
       quantity : 1,
       },

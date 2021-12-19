@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {endpoint = environment.baseUrl;
+export class AuthService {
   headers = new HttpHeaders()
   .set(
     'Content-Types',
@@ -25,15 +24,15 @@ export class AuthService {endpoint = environment.baseUrl;
 
 
   signupUser(user:any){
-    return this.http.post<any>(`${this.endpoint}/user/signup`, user)
+    return this.http.post<any>(`${environment.baseUrl}/user/signup`, user)
   }
 
   signinUser(user:any){
-    return this.http.post<any>(`${this.endpoint}/user/signin`, user)
+    return this.http.post<any>(`${environment.baseUrl}/user/signin`, user)
   }
 
   postAddress(user:any){
-    return this.http.post<any>(`${this.endpoint}/user/address`, user)
+    return this.http.post<any>(`${environment.baseUrl}/user/address`, user)
   }
 
   login(){
@@ -61,27 +60,5 @@ export class AuthService {endpoint = environment.baseUrl;
       return localStorage.getItem('token');
   }
 
-  getUserProfile(_id:any): Observable<any>{
-    let api = `${this.endpoint}user/${_id}`;
-    return this.http.get(api,{
-        headers: this.headers
-    }).pipe(
-        map((res: any)=>{
-            return res || {}
-        }),
-        catchError(this.handleError)
-    )
-}
-  handleError(error:HttpErrorResponse){
-        let pesan = '';
 
-        if(error.error instanceof ErrorEvent){
-            pesan = error.error.message
-
-        }else{
-            pesan = `Error code: ${error.status} \n Pesan Error: ${error.message}`;
-        }
-        return throwError(pesan);
-
-  }
 }

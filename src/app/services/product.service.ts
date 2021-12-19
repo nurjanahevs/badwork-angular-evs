@@ -18,18 +18,5 @@ export class ProductService {
   private getProductData(response:any) {
     return response.product
   }
-  private categoryData(response:any){
-    return response.data
-  }
-  getDetailProduct(_id:any) : Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/product/${_id}`).pipe(map(res => {
-      return res
-    }))
-  }
-  public getCategory() : Observable<any[]> {
-    return this.http.get<any[]>(`${environment.baseUrl}/category`).pipe(map(this.categoryData))
-  }
-  public getProductCategory(_id:any) : Observable<any[]>{
-    return this.http.get<any[]>(`${environment.baseUrl}/product/category/${_id}`).pipe(map(this.getProductData))
-  }
+
 }
