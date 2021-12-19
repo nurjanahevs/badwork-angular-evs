@@ -15,6 +15,7 @@ export class ProductService {
   public getProduct() : Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/product`).pipe(map(this.getProductData))
   }
+
   private getProductData(response:any) {
     return response.product
   }

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -14,14 +13,10 @@ export class AuthService {
     'Content-Types',
     'application/json',
   );
+  baseUrl: any
   datauser = {}
 
   constructor(private http:HttpClient, private router:Router ) { }
-
-  private getUserdata(response:any){
-    return response.data
-  }
-
 
   signupUser(user:any){
     return this.http.post<any>(`${environment.baseUrl}/user/signup`, user)
@@ -39,11 +34,6 @@ export class AuthService {
     return !!localStorage.getItem('access_token')
   }
 
-  getUsername(){
-    return this.http.get<any[]>(environment.baseUrl + 'user').pipe(map(this.getUserdata))
-  }
-
-
   logoutUser(){
     let removeToken = localStorage.removeItem('access_token');
     if(removeToken == null){
@@ -59,6 +49,5 @@ export class AuthService {
   getToken(){
       return localStorage.getItem('token');
   }
-
 
 }
